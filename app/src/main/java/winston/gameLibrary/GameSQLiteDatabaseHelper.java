@@ -15,7 +15,7 @@ import java.sql.Blob;
  * Created by 4th3ist on 5/2/2016.
  */
 
-public class GameDatabaseHelper extends SQLiteOpenHelper {
+public class GameSQLiteDatabaseHelper extends SQLiteOpenHelper {
     //Define DB: name
     public static final int DATABASE_VERSION = 1;
     public static final String DATABASE_NAME = "game_library";
@@ -24,7 +24,6 @@ public class GameDatabaseHelper extends SQLiteOpenHelper {
     //DB Columns
     public static final String COL_ID = "_id";
     public static final String COL_NAME = "name";
-    public static final String COL_PLATFORM = "platform";
     public static final String COL_GENRE = "genre";
     public static final String COL_RELEASE = "release";
     public static final String COL_BLURB = "blurb";
@@ -32,28 +31,27 @@ public class GameDatabaseHelper extends SQLiteOpenHelper {
 /*
     //04-week/05-sql-helper-class version || 04/05-shc-ver
     public static final String SQL_CREATE_GAMELIB_TABLE =
-            "CREATE TABLE gameLibrary (_id INTEGER PRIMARY KEY AUTOINCREMENT, gameName TEXT, gamePlatform TEXT, gameGenre TEXT, gameRelease TEXT, gameDescrip TEXT)";
+            "CREATE TABLE gameLibrary (_id INTEGER PRIMARY KEY AUTOINCREMENT, gameName TEXT, gameGenre TEXT, gameRelease TEXT, gameDescrip TEXT)";
 */
-    public static final String[] GAME_COLUMNS = {COL_ID, COL_NAME, COL_PLATFORM, COL_GENRE, COL_RELEASE, COL_BLURB};
+    public static final String[] GAME_COLUMNS = {COL_ID, COL_NAME, COL_GENRE, COL_RELEASE, COL_BLURB};
 
     private static final String CREATE_GAME_TABLE
-            = "CREATE TABLE "+GAME_TABLE_NAME+"("+COL_ID+ "INTEGER PRIMARY KEY AUTOINCREMENT, "+
-            COL_NAME+" TEXT, "+
-            COL_PLATFORM+" TEXT, "+
-            COL_GENRE+" TEXT, "+
-            COL_RELEASE+" TEXT, "+
-            COL_BLURB+" TEXT )";
+            = "CREATE TABLE "+GAME_TABLE_NAME+"("+COL_ID+ "INTEGER PRIMARY KEY AUTOINCREMENT, "
+            +COL_NAME+" TEXT, "
+            +COL_GENRE+" TEXT, "
+            +COL_RELEASE+" TEXT, "
+            +COL_BLURB+" TEXT )";
 
-    private static GameDatabaseHelper instance;
+    private static GameSQLiteDatabaseHelper instance;
 
-    public static GameDatabaseHelper getInstance(Context context){
+    public static GameSQLiteDatabaseHelper getInstance(Context context){
         if(instance==null){
-            instance = new GameDatabaseHelper(context);
+            instance = new GameSQLiteDatabaseHelper(context);
         }
         return instance;
     }
     //04/05-shc-ver
-    private GameDatabaseHelper(Context context){
+    public GameSQLiteDatabaseHelper(Context context){
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
 //        setForcedUpgrade();
     }
@@ -91,7 +89,6 @@ public class GameDatabaseHelper extends SQLiteOpenHelper {
 /*  //04/05-shc-ver
     public void insert(int _id,
                        String game_name,
-                       String game_platform,
                        String game_genre,
                        String game_release,
                        String game_blurb){
@@ -102,8 +99,6 @@ public class GameDatabaseHelper extends SQLiteOpenHelper {
         ContentValues values = new ContentValues();
             values.put("id", _id);
             values.put("name", game_name);
-
-            values.put("platform", game_platform);
             values.put("genre", game_genre);
             values.put("release", game_release);
             values.put("description", game_blurb);
@@ -115,7 +110,7 @@ public class GameDatabaseHelper extends SQLiteOpenHelper {
 
 
         // Define a projection
-        String[] projection = new String[]{"id","name","platform","genre","release","description"};
+        String[] projection = new String[]{"id","name","genre","release","description"};
 
         // Define a selection
         String selection = "id = ?";
@@ -131,12 +126,11 @@ public class GameDatabaseHelper extends SQLiteOpenHelper {
         cursor.moveToFirst();
 
         String name = cursor.getString(cursor.getColumnIndex("name"));
-        String platform = cursor.getString(cursor.getColumnIndex("platform"));
         String genre = cursor.getString(cursor.getColumnIndex("genre"));
         String release = cursor.getString(cursor.getColumnIndex("release"));
         String description = cursor.getString(cursor.getColumnIndex("description"));
 
-        return new GameLib (_id, name, platform, genre, release, description);
+        return new GameLib (_id, name, genre, release, description);
     }
 */
 

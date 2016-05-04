@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="winston.gameLibrary.DetailActivity">
+
+    <ImageView
+        android:id="@+id/game_screenshot"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_centerHorizontal="true"
+        android:padding="5dp"/>
+
+    <View
+        android:id="@+id/displayBar"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:background="#a9a9a9"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/game_screenshot"/>
+
+    <TextView
+        android:id="@+id/game_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Game Name"
+        android:textSize="20dp"
+        android:textColor="#FFFFFF"
+        android:layout_alignBottom="@+id/displayBar"/>
+
+    <!--<TextView
+        android:id="@+id/daily_bug_latin_name"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:text="Long Latin Name"
+        android:padding="15dp"
+        android:layout_above="@+id/daily_bug_description"
+        android:layout_toRightOf="@+id/daily_bug_image"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:id="@+id/daily_bug_description"
+        android:layout_width="wrap_content"
+        android:layout_height="70dp"
+        android:text="Truncated Description"
+        android:layout_alignBottom="@+id/daily_bug_image"
+        android:layout_toRightOf="@+id/daily_bug_image"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        />-->
+
+</RelativeLayout>
