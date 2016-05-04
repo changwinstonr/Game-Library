@@ -1,12 +1,7 @@
 package winston.gameLibrary;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
-import android.widget.TextView;
-
-import java.util.LinkedList;
+import android.support.v7.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -15,6 +10,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        GameDatabaseHelper db = new GameDatabaseHelper(this);
+
+
+/*
         mStringList = new LinkedList<>();
         mStringList.add("Read");
         mStringList.add("Learn");
@@ -23,6 +22,6 @@ public class MainActivity extends AppCompatActivity {
         mAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, mStringList);
 
         ListView listName = (ListView) (findViewById(R.id.listView));
-        listName.setAdapter(mAdapter);
+        listName.setAdapter(mAdapter);*/
     }
 }
