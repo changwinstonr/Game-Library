@@ -266,18 +266,27 @@ public class GameSQLiteDatabaseHelper extends SQLiteOpenHelper {
     }
 //-------------END HARDCODED #overkill DB SEED---------------\\
 
+    public Cursor listGames(){
+        SQLiteDatabase db = this.getReadableDatabase();
 
-    public Cursor listGames(String query){
+        Cursor cursor = db.query(
+                TABLE_NAME,
+                new String[]{COL_ID, COL_NAME, COL_GENRE, COL_RELEASE, COL_BLURB},
+                    null, null, null, null, null);
+        return cursor;
+    }
+
+    public Cursor searchLibrary(String query){
         SQLiteDatabase db = this.getReadableDatabase();
 
         Cursor cursor = db.query(
                 TABLE_NAME,
                 GAME_COLUMNS,
-                COL_ID + " LIKE ? or "
-                + COL_NAME + " LIKE ? or "
-                + COL_GENRE + " LIKE ? or "
-                + COL_RELEASE + " LIKE ? or "
-                + COL_BLURB + " LIKE ?",
+                COL_ID + "LIKE ? or"
+                + COL_NAME + "LIKE ? or"
+                + COL_GENRE + "LIKE ? or"
+                + COL_RELEASE + "LIKE ? or"
+                + COL_BLURB + "LIKE ?",
                 new String[]{
                         "%" + query + "%",
                         "%" + query + "%",

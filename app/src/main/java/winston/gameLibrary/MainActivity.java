@@ -26,8 +26,8 @@ public class MainActivity extends AppCompatActivity {
     ArrayList<Games> gamesDetail;
 
     //fatboyslim menu
-    @Override
-    public boolean onCreateMenu (Menu menu){
+    //@Override
+    public boolean OnCreateMenu (Menu menu){
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu, menu);
 
@@ -64,6 +64,8 @@ public class MainActivity extends AppCompatActivity {
         //cursed cursors
         Cursor cursor = GameSQLiteDatabaseHelper.getInstance(this).listGames();
 
+        gamesDetail = new ArrayList<Games>();
+
         for (cursor.moveToFirst();!cursor.isAfterLast();cursor.moveToNext()){
             Games addGame = new Games();
                 addGame.setmName(cursor.getString(cursor.getColumnIndex("name")));
@@ -86,7 +88,7 @@ public class MainActivity extends AppCompatActivity {
 
                 @Override
                 public void bindView(View view, Context context, Cursor cursor) {
-                    TextView gameName = (TextView) view.findViewById(R.id.game_name);
+                    TextView gameName = (TextView) view.findViewById(R.id.GameName);
                     String games = cursor.getString(cursor.getColumnIndex("name"));
                     gameName.setText(games);
                 }
@@ -99,13 +101,13 @@ public class MainActivity extends AppCompatActivity {
         }
 
         //Listen for clicky, clicky, tappy, tappy onItem
-        listview.setAdapter(adapter);
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener()) {
+        listView.setAdapter(adapter);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onItemClick (AdapterView<?> parent, Vew view, int position, long id){
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id){
                 Cursor cursor = adapter.getCursor();
                 cursor.moveToPosition(position);
-                Intent intent = new Intent(MainActivity.this, );
+                Intent intent = new Intent(MainActivity.this, DetailActivity.class);
                 intent.putExtra("name", cursor.getString(cursor.getColumnIndex(GameSQLiteDatabaseHelper.COL_NAME)));
                 intent.putExtra("genre", cursor.getString(cursor.getColumnIndex(GameSQLiteDatabaseHelper.COL_GENRE)));
                 intent.putExtra("release", cursor.getString(cursor.getColumnIndex(GameSQLiteDatabaseHelper.COL_RELEASE)));
@@ -114,6 +116,8 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        handleIntent(getIntent());
 
     }
 
