@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <searchable xmlns:android="http://schemas.android.com/apk/res/android">
     android:label="Game Library"
-    android:hint="Search[Name, Genre, YYYY-MM-DD]">
+    android:hint="Search[Name, Platform, Genre, YYYY-MM-DD]">
 </searchable>
