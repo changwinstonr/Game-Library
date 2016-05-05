@@ -19,7 +19,7 @@ public class GameSQLiteDatabaseHelper extends SQLiteOpenHelper {
     //Define DB: name
     public static final int DATABASE_VERSION = 1;
     public static final String DATABASE_NAME = "game_library";
-    public static final String GAME_TABLE_NAME = "Game_Table";
+    public static final String TABLE_NAME = "Game_Table";
 
     //DB Columns
     public static final String COL_ID = "_id";
@@ -36,19 +36,19 @@ public class GameSQLiteDatabaseHelper extends SQLiteOpenHelper {
     public static final String[] GAME_COLUMNS = {COL_ID, COL_NAME, COL_GENRE, COL_RELEASE, COL_BLURB};
 
     private static final String CREATE_GAME_TABLE
-            = "CREATE TABLE "+GAME_TABLE_NAME+"("+COL_ID+ "INTEGER PRIMARY KEY AUTOINCREMENT, "
+            = "CREATE TABLE "+ TABLE_NAME +"("+COL_ID+ "INTEGER PRIMARY KEY AUTOINCREMENT, "
             +COL_NAME+" TEXT, "
             +COL_GENRE+" TEXT, "
             +COL_RELEASE+" TEXT, "
             +COL_BLURB+" TEXT )";
 
-    private static GameSQLiteDatabaseHelper instance;
+    private static GameSQLiteDatabaseHelper mInstance;
 
     public static GameSQLiteDatabaseHelper getInstance(Context context){
-        if(instance==null){
-            instance = new GameSQLiteDatabaseHelper(context);
+        if(mInstance==null){
+            mInstance = new GameSQLiteDatabaseHelper(context);
         }
-        return instance;
+        return mInstance;
     }
     //04/05-shc-ver
     public GameSQLiteDatabaseHelper(Context context){
@@ -68,20 +68,20 @@ public class GameSQLiteDatabaseHelper extends SQLiteOpenHelper {
     public void onUpgrade (SQLiteDatabase db, int oldVersion, int newVersion){
         //04/05-shc-ver
         // public final String SQL_DROP_GAMELIB_TABLE = "DROP TABLE IF EXISTS gameLibrary";
-        db.execSQL("DROP TABLE IF EXISTS" + GAME_TABLE_NAME);
+        db.execSQL("DROP TABLE IF EXISTS" + TABLE_NAME);
         this.onCreate(db);
     }//end onUpgrade
 
     public void setDefaultData(SQLiteDatabase db){
         ContentValues values = new ContentValues();
         values.put(COL_NAME, "game");
-        db.insert(GAME_TABLE_NAME, null, values);
+        db.insert(TABLE_NAME, null, values);
     }
 
     public Cursor getGameList(String query){
         SQLiteDatabase db = this.getReadableDatabase();
 
-        Cursor cursor = db.query(GAME_TABLE_NAME, GAME_COLUMNS, COL_NAME, null, null, null, null);
+        Cursor cursor = db.query(TABLE_NAME, GAME_COLUMNS, COL_NAME, null, null, null, null);
         return cursor;
     }
 

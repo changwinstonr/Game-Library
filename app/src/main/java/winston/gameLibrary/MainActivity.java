@@ -24,6 +24,17 @@ public class MainActivity extends AppCompatActivity {
         dbHelper.getReadableDatabase();
 
         handleIntent(getIntent());
+
+        //set ListView on
+/*        listView.setOnItemClickListener(new AdapterView.OnItemClickListener()){
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id){
+                Intent intent  = new Intent(MainActivity.this, DetailActivity.class);
+                cursor.moveToPosition(position);
+                intent.putExtra("id",cursor.getInt(cursor.getColumnIndex(GameSQLiteDatabaseHelper.COL_ID)));
+                startActivity(intent);
+            }
+        }//end OnItemClickListener*/
     }
 
     //begins intent... May the 4th be with me.
@@ -34,7 +45,6 @@ public class MainActivity extends AppCompatActivity {
         if(Intent.ACTION_SEARCH.equals(intent.getAction())){
             String query = intent.getStringExtra(SearchManager.QUERY); //deep search?
 
-            //"Curse these cursors on this m-fing class." ~Samuel L. Jackson "Cursors in a Class"
             Cursor cursor = GameSQLiteDatabaseHelper.getInstance(MainActivity.this).getGameList(query);
             DatabaseUtils.dumpCursor(cursor);
             ListView gamesListView = (ListView)findViewById(R.id.game_List_View);
