@@ -73,7 +73,15 @@ public class GameSQLiteDatabaseHelper extends SQLiteOpenHelper {
 //-------------BEGIN HARDCODED #overkill DB SEED-------------\\
 //-------------!!WARNING!!: UNFOLD AT OWN RISK---------------\\
     public void setDefaultData(SQLiteDatabase db){
-
+/* Database _id
+1-AoEIII | 2-AvP2 | 3-BF3 | 4-Blacklight | 5-BL | 6-BL2 | 7-Bulletstorm | 8-BurnoutRevenge | 9-BurnoutParadise | 10-Carcassonne | 11-Catan | 12-CoH | 13-CoV |
+14-Civ4| 15-Civ5 | 16-Civ-BE | 17-C&C3-TW | 18-C&C-G-ZH | 19-C&C-RA2 | 20-C&C-RA3 | 21-Crackdown | 22-Defiance | 23-DeusEx | 24-D2-LoD | 25-D3 | 26-Dragon'sDogma |
+27-Fable2 | 28-Fable3 | 29-FFX | 30-FFX2 | 31-FFXIV | 32-Gears1 | 33-Gears2 | 34-Gears3 | 35-GW | 36-GW2 | 37-Halo3 | 38-Halo3-ODST | 39-Halo4 | 40-HaloReach | 41-Halo5 |
+42-HGL | 43-HoMM3 | 44-HoMM4 | 45-HoMM5-TotE | 46-HoMM6 | 47-HoMM7 | 48-HotS | 49-KF | 50-KoAR | 51-ME1 | 52-ME2 | 53-ME3 | 54-MiddleEarth-SoM | 55-Payday2 |
+56-PQ-CotW | 57-PQ2 | 58-Q3A | 59-Recettear | 60-SimCity | 61-sC4 | 62-SPAZ | 63-SC2 | 64-TabulaRasa | 65-Terraria | 66-LotR-TBfME1 |  67-LotR-TBfME2 | 68-TSW |
+69-TheDivision | 70-TooHuman | 71-TL1 | 72-TL2 | 73-TA | 74-UT2k4 | 75-UT3 |76-Wc3-RoC | 77-Wc3-TFT | 78-Warframe | 79-WH40k-DoW-DC | 80-WH40k-DoW-SS | 81-WH40k-DoW2 | 82-WH40k-DoW2-CR | 83-WH40k-DoW2-Retrib | 84-WH40k-SM |
+85-WoW | 86-WormsArmageddon | 87-XmenLegends2-RoA | 88-XCOM-EU | 89-XCOM2
+*/
     /*  //TEMPLATE#
         ContentValues
         values = new ContentValues();
@@ -83,8 +91,6 @@ public class GameSQLiteDatabaseHelper extends SQLiteOpenHelper {
         values.put(COL_BLURB, "");
         db.insert(GAME_TBL_NAME, null, values);*/
 
-//1-AoEIII | 2-AvP2 | 3-BF3 | 4-Blacklight | 5-BL | 6-BL2 | 7-Bulletstorm | 8-Burnout Revenge | 9-Burnout Paradise | 10-Carcassonne | 11-Catan | 12-CoH | 13-CoV |
-//14-Civ4| 15-Civ5 | 16-CivBE | 17-C&C3-TW | 18-C&C-G-ZH | | | | | | | | | | | | ||
         ContentValues
             values = new ContentValues(); values.put(COL_NAME, "Age of Empires III (PC)");	values.put(COL_GENRE, "Strategy"); values.put(COL_RELEASE, "2005-10-18");	values.put(COL_BLURB, "Age of Empires III will offer gamers the next level of realism, with advanced battle physics and unparalleled visual detail. The new game picks up where Age of Empires II: Age of Kings left off, placing gamers in the position of a European power determined to explore, colonize and conquer the New World. This time period features stunning scenes, from towering European cathedrals to courageous tribes of Native Americans, and spectacular combat with Industrial Age units like rifled infantry, cavalry and tall ships bristling with cannons. Age of Empires III will once again demonstrate Ensemble Studios' reputation for excellence and innovation in the real-time strategy (RTS) genre. The game will set a new standard for visual quality and amaze players with detail never before seen in an RTS. Age of Empires III will excite strategy gamers with new game-play elements, including the concept of a 'Home City,' new civilizations, units, technologies and an immersive new single-player campaign that will span three generations.");	db.insert(GAME_TBL_NAME, null, values);
         values = new ContentValues(); values.put(COL_NAME, "Aliens Versus Predator 2 (PC)");	values.put(COL_GENRE, "Action Shooter"); values.put(COL_RELEASE, "2001-10-31");	values.put(COL_BLURB, "Go to the Planet LV1201, where three diverse and bloodthirsty species battle for survival. The action is heart-stopping. You can choose to play as Alien, Predator, or Marine as you use your physical prowess, killer instincts, or superior firepower to stay alive.");	db.insert(GAME_TBL_NAME, null, values);
