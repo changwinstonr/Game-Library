@@ -94,6 +94,7 @@ public class MainActivity extends AppCompatActivity {
                 //CustomLayout
                 public void bindView(View view, Context context, Cursor cursorSearch) {
                     TextView gameName = (TextView) view.findViewById(R.id.GameName);
+                    gameName.setTextSize(14.0f);
                     String games = cursorSearch.getString(cursorSearch.getColumnIndex("name"));
                     gameName.setText(games);
                 }

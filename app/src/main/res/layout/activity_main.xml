@@ -20,20 +20,10 @@
         <!--android:layout_alignParentEnd="true"-->
         <!--android:background="#A9A9A9"/>-->
 
-    <!--<TextView
-        android:id="@+id/game_Text_View"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Search [Name, Genre, YYYY-MM-DD]"
-        android:textSize="14dp"
-        android:padding="14dp"
-        android:textColor="#FFFFFF"
-        android:layout_alignBottom="@+id/searchView"/>-->
-
     <ListView
         android:id="@+id/game_List_View"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@+id/searchView">
+        android:layout_height="match_parent">
+        <!--android:layout_below="@+id/searchView">-->
     </ListView>
 </RelativeLayout>
