@@ -1,6 +1,8 @@
 package winston.gameLibrary;
 
-public class Games {
+import android.support.v7.app.AppCompatActivity;
+
+public class GamesGlobalActivity extends AppCompatActivity{
     //per Graeme's advice. variables globalized
     private String m_id;
     private String mName;

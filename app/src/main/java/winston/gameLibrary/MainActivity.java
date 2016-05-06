@@ -4,6 +4,7 @@ import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
+import android.database.DatabaseUtils;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.SearchView;
@@ -23,17 +24,17 @@ public class MainActivity extends AppCompatActivity {
     CursorAdapter adapter;
     ListView listView;
 
-    ArrayList<Games> gamesDetail;
+    ArrayList<GamesGlobalActivity> gamesDetail;
 
     //fatboyslim menu
-    //@Override
-    public boolean OnCreateMenu (Menu menu){
+    @Override
+    public boolean onCreateOptionsMenu (Menu menu){
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu, menu);
 
         //reference for searchable
         SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
-        SearchView searchView = (SearchView) menu.findItem(R.id.searchView).getActionView();
+        SearchView searchView = (SearchView) menu.findItem(R.id.searchmenu).getActionView();
         searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
         return true;
     }
@@ -47,11 +48,14 @@ public class MainActivity extends AppCompatActivity {
     private void handleIntent(Intent intent){
         if(Intent.ACTION_SEARCH.equals(intent.getAction())){
             String query = intent.getStringExtra(SearchManager.QUERY);
-            Cursor cursor = GameSQLiteDatabaseHelper.getInstance(MainActivity.this).searchLibrary(query);
+            Cursor cursorSearch = GameSQLiteDatabaseHelper.getInstance(MainActivity.this).searchLibrary(query);
             //second swapCursor on the intent
-            adapter.swapCursor(cursor);
-        }
+            DatabaseUtils.dumpCursor(cursorSearch);
+            adapter.swapCursor(cursorSearch);
 
+        //if
+        //if(cursorSearch.getCount() == 0)
+        }
     }
 
     @Override
@@ -62,24 +66,24 @@ public class MainActivity extends AppCompatActivity {
         listView = (ListView) findViewById(R.id.game_List_View);
 
         //cursed cursors
-        Cursor cursor = GameSQLiteDatabaseHelper.getInstance(this).listGames();
+        Cursor cursorSearch = GameSQLiteDatabaseHelper.getInstance(this).listGames();
 
-        gamesDetail = new ArrayList<Games>();
+        gamesDetail = new ArrayList<GamesGlobalActivity>();
 
-        for (cursor.moveToFirst();!cursor.isAfterLast();cursor.moveToNext()){
-            Games addGame = new Games();
-                addGame.setmName(cursor.getString(cursor.getColumnIndex("name")));
-                addGame.setmGenre(cursor.getString(cursor.getColumnIndex("genre")));
-                addGame.setmRelease(cursor.getString(cursor.getColumnIndex("release")));
-                addGame.setmBlurb(cursor.getString(cursor.getColumnIndex("blurb")));
+        for (cursorSearch.moveToFirst();!cursorSearch.isAfterLast();cursorSearch.moveToNext()){
+            GamesGlobalActivity addGame = new GamesGlobalActivity();
+                addGame.setmName(cursorSearch.getString(cursorSearch.getColumnIndex("name")));
+                addGame.setmGenre(cursorSearch.getString(cursorSearch.getColumnIndex("genre")));
+                addGame.setmRelease(cursorSearch.getString(cursorSearch.getColumnIndex("release")));
+                addGame.setmBlurb(cursorSearch.getString(cursorSearch.getColumnIndex("blurb")));
 
             gamesDetail.add(addGame);
         }
         //curse these cursoradapters
         if (adapter == null){
-            adapter = new CursorAdapter(this, cursor, 1) {
+            adapter = new CursorAdapter(this, cursorSearch, 0) {
                 @Override
-                public View newView(Context context, Cursor cursor, ViewGroup viewGroup) {
+                public View newView(Context context, Cursor cursorSearch, ViewGroup viewGroup) {
                     //fatboyslim xml
                     LayoutInflater layoutInflater = LayoutInflater.from(context);
                     View view = layoutInflater.inflate(R.layout.activity_games, viewGroup, false);
@@ -88,9 +92,9 @@ public class MainActivity extends AppCompatActivity {
 
                 @Override
                 //CustomLayout
-                public void bindView(View view, Context context, Cursor cursor) {
+                public void bindView(View view, Context context, Cursor cursorSearch) {
                     TextView gameName = (TextView) view.findViewById(R.id.GameName);
-                    String games = cursor.getString(cursor.getColumnIndex("name"));
+                    String games = cursorSearch.getString(cursorSearch.getColumnIndex("name"));
                     gameName.setText(games);
                 }
             };
@@ -98,7 +102,7 @@ public class MainActivity extends AppCompatActivity {
             listView.setAdapter(adapter);
         }else{
             //Swap in a new Cursor, returning the old Cursor.
-            adapter.swapCursor(cursor);
+            adapter.swapCursor(cursorSearch);
         }
 
         //Listen for clicky, clicky, tappy, tappy onItem
@@ -106,13 +110,13 @@ public class MainActivity extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id){
-                Cursor cursor = adapter.getCursor();
-                cursor.moveToPosition(position);
+                Cursor cursorSearch = adapter.getCursor();
+                cursorSearch.moveToPosition(position);
                 Intent intent = new Intent(MainActivity.this, DetailActivity.class);
-                intent.putExtra("name", cursor.getString(cursor.getColumnIndex(GameSQLiteDatabaseHelper.COL_NAME)));
-                intent.putExtra("genre", cursor.getString(cursor.getColumnIndex(GameSQLiteDatabaseHelper.COL_GENRE)));
-                intent.putExtra("release", cursor.getString(cursor.getColumnIndex(GameSQLiteDatabaseHelper.COL_RELEASE)));
-                intent.putExtra("blurb", cursor.getString(cursor.getColumnIndex(GameSQLiteDatabaseHelper.COL_BLURB)));
+                intent.putExtra("name", cursorSearch.getString(cursorSearch.getColumnIndex(GameSQLiteDatabaseHelper.COL_NAME)));
+                intent.putExtra("genre", cursorSearch.getString(cursorSearch.getColumnIndex(GameSQLiteDatabaseHelper.COL_GENRE)));
+                intent.putExtra("release", cursorSearch.getString(cursorSearch.getColumnIndex(GameSQLiteDatabaseHelper.COL_RELEASE)));
+                intent.putExtra("blurb", cursorSearch.getString(cursorSearch.getColumnIndex(GameSQLiteDatabaseHelper.COL_BLURB)));
 
                 startActivity(intent);
             }

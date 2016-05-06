@@ -200,14 +200,15 @@ public class GameSQLiteDatabaseHelper extends SQLiteOpenHelper {
         Cursor cursor = db.query(
                 GAME_TBL_NAME,
                 GAME_COLUMNS,
-                COL_ID + " LIKE ? OR "
-                + COL_NAME + " LIKE ? OR "
+//Commenting out ID and BLURB so that walls of text and random numbers aren't searchable.
+                //COL_ID + " LIKE ? OR " +
+                COL_NAME + " LIKE ? OR "
                 + COL_GENRE + " LIKE ? OR "
-                + COL_RELEASE + " LIKE ? OR "
-                + COL_BLURB + " LIKE ?",
+                + COL_RELEASE + " LIKE ? ",
+                //+ COL_BLURB + " LIKE ?",
                 new String[]{
-                        "%" + query + "%",
-                        "%" + query + "%",
+//                        "%" + query + "%",
+//                        "%" + query + "%",
                         "%" + query + "%",
                         "%" + query + "%",
                         "%" + query + "%"},

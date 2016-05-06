@@ -8,12 +8,17 @@
         android:label="Game Library"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity"
+            android:launchMode="singleTop">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <action android:name="android.intent.action.SEARCH" />
 
+                <action android:name="android.intent.action.MAIN" />
+<!--                <action android:name="android.intent.action.SEARCH" />
+                <action android:name="android.intent.action.VIEW" />-->
                 <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.SEARCH"/>
             </intent-filter>
 
             <meta-data
@@ -21,7 +26,7 @@
                 android:resource="@xml/searchable" />
         </activity>
         <activity android:name=".DetailActivity" />
-        <activity android:name=".Games"/>
+        <activity android:name=".GamesGlobalActivity"/>
     </application>
 
 </manifest>
