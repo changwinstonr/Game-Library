@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.DatabaseUtils;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.SearchView;
@@ -95,6 +96,10 @@ public class MainActivity extends AppCompatActivity {
                 public void bindView(View view, Context context, Cursor cursorSearch) {
                     TextView gameName = (TextView) view.findViewById(R.id.GameName);
                     gameName.setTextSize(14.0f);
+//                    gameName.setTextColor(Color.parseColor("#000000"));
+//                    gameName.setBackgroundColor(Color.parseColor("#FFFFFF"));
+                    gameName.setTextColor(Color.WHITE);
+                    //gameName.setBackgroundColor(Color.LTGRAY);
                     String games = cursorSearch.getString(cursorSearch.getColumnIndex("name"));
                     gameName.setText(games);
                 }
