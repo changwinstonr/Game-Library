@@ -33,7 +33,7 @@ public class GameSQLiteDatabaseHelper extends SQLiteOpenHelper {
 
     private static final String CREATE_GAME_TABLE
             = "CREATE TABLE "+ TABLE_NAME +
-         "("+COL_ID+ "INTEGER PRIMARY KEY AUTOINCREMENT, "
+         "("+COL_ID+ " INTEGER PRIMARY KEY AUTOINCREMENT, "
             +COL_NAME+" TEXT, "
             +COL_GENRE+" TEXT, "
             +COL_RELEASE+" TEXT, "
