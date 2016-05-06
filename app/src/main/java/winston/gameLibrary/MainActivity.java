@@ -98,7 +98,7 @@ public class MainActivity extends AppCompatActivity {
                     gameName.setTextSize(14.0f);
 //                    gameName.setTextColor(Color.parseColor("#000000"));
 //                    gameName.setBackgroundColor(Color.parseColor("#FFFFFF"));
-                    gameName.setTextColor(Color.WHITE);
+                    gameName.setTextColor(Color.GRAY);
                     //gameName.setBackgroundColor(Color.LTGRAY);
                     String games = cursorSearch.getString(cursorSearch.getColumnIndex("name"));
                     gameName.setText(games);
