@@ -17,7 +17,7 @@ import java.sql.Blob;
 
 public class GameSQLiteDatabaseHelper extends SQLiteOpenHelper {
     //Define DB: name
-    public static final int DATABASE_VERSION = 1;
+    public static final int DATABASE_VERSION = 2;
     public static final String DATABASE_NAME = "game_library.db";
     public static final String TABLE_NAME = "Game_Table";
 

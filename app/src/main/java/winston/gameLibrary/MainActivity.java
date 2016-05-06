@@ -87,6 +87,7 @@ public class MainActivity extends AppCompatActivity {
                 }
 
                 @Override
+                //CustomLayout
                 public void bindView(View view, Context context, Cursor cursor) {
                     TextView gameName = (TextView) view.findViewById(R.id.GameName);
                     String games = cursor.getString(cursor.getColumnIndex("name"));
