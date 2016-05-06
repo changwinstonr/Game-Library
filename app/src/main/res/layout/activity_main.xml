@@ -14,7 +14,7 @@
         android:id="@+id/searchView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:queryHint="Search [Name, Genre, YYYY-MM-DD]"
+        android:queryHint="[Name, Genre, YYYY-MM-DD]"
         android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"

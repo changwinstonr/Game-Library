@@ -3,6 +3,7 @@ package winston.gameLibrary;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.method.ScrollingMovementMethod;
 import android.widget.TextView;
 
 public class DetailActivity extends AppCompatActivity {
@@ -30,6 +31,8 @@ public class DetailActivity extends AppCompatActivity {
         genre.setText(mGenre);
         release.setText(mRelease);
         blurb.setText(mBlurb);
+
+        blurb.setMovementMethod(new ScrollingMovementMethod());
 
 
 
