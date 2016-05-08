@@ -54,8 +54,10 @@ public class MainActivity extends AppCompatActivity {
             DatabaseUtils.dumpCursor(cursorSearch);
             adapter.swapCursor(cursorSearch);
 
-        //if
-        //if(cursorSearch.getCount() == 0)
+        //if(cursorSearch.getCount() == 0){
+        //  cursorSearch = GameSQLiteDatabaseHelper.getInstance(MainActivity.this).listGames(query);
+        //  Toast.makeText(MainActivity.this,"Invalid input. Your Princess is in another castle." Toast.LENGTH_LONG).show();
+        // }
         }
     }
 
