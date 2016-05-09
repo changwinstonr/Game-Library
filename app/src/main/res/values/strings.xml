@@ -3,4 +3,5 @@
     <string name="search_label">Game Library</string>
     <string name="search_hint">[Name, Genre, YYYY]</string>
     <string name="search">[Name, Genre, YYYY]</string>
+    <string name="list_view">List of popular games</string>
 </resources>
