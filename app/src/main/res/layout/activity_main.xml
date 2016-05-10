@@ -24,8 +24,8 @@
     <ListView
         android:id="@+id/game_List_View"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:contentDescription=”@string/list_view”>
+        android:layout_height="match_parent">
+        <!--android:contentDescription=”@string/list_view”>-->
     <!--android:layout_below="@+id/searchView">-->
     </ListView>
 </RelativeLayout>
