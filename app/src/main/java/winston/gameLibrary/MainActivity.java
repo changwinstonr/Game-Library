@@ -1,15 +1,12 @@
 package winston.gameLibrary;
 
-import android.app.Dialog;
 import android.app.SearchManager;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.DatabaseUtils;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.SearchView;
 import android.view.LayoutInflater;
@@ -136,7 +133,7 @@ public class MainActivity extends AppCompatActivity {
         handleIntent(getIntent());
 
         //Dialog Interface Attempt
-        @Override
+/*        @Override
         public Dialog onCreateDialog(Bundle savedInstanceState){
             AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
             builder.setTitle(R.string.dialog_title)
@@ -155,7 +152,7 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-        AlertDialog dialog = builder.create();
+        AlertDialog dialog = builder.create();*/
 
     }//end onCreate
 
