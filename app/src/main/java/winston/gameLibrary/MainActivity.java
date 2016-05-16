@@ -59,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
         //  Toast.makeText(MainActivity.this,"Invalid input. Your Princess is in another castle." Toast.LENGTH_LONG).show();
         // }
         }
-    }
+    }//end intent
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
